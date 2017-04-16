@@ -47,15 +47,15 @@ def moses_multi_bleu(hypotheses, references, lowercase=False):
     return np.float32(0.0)
 
   # Get MOSES multi-bleu script
-  multi_bleu_path, _ = urllib.request.urlretrieve(
-      "https://raw.githubusercontent.com/moses-smt/mosesdecoder/"
-      "master/scripts/generic/multi-bleu.perl")
-  os.chmod(multi_bleu_path, 0o755)
+  #  multi_bleu_path, _ = urllib.request.urlretrieve(
+  #      "https://raw.githubusercontent.com/moses-smt/mosesdecoder/"
+  #      "master/scripts/generic/multi-bleu.perl")
+  #  os.chmod(multi_bleu_path, 0o755)
 
   # Alternatively, get file locally
-  # training_dir = os.path.dirname(os.path.realpath(__file__))
-  # bin_dir = os.path.abspath(os.path.join(training_dir, "..", "..", "bin"))
-  # multi_bleu_path = os.path.join(bin_dir, "tools/multi-bleu.perl")
+  training_dir = os.path.dirname(os.path.realpath(__file__))
+  bin_dir = os.path.abspath(os.path.join(training_dir, "..", "..", "bin"))
+  multi_bleu_path = os.path.join(bin_dir, "tools/multi-bleu.perl")
 
   # Dump hypotheses and references to tempfiles
   hypothesis_file = tempfile.NamedTemporaryFile()
